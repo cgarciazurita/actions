@@ -3,28 +3,13 @@ name: Hola Mundo
 on: [push]
 
 jobs:
-  holaCGZ:
+  sayHello:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Hola Mundo
-      run: echo "Hola Mundo"
-
-    - name: touch file
-      run: touch hola.txt 
-
-    - name: Set text
-      run: echo "Hola Mundo" >> hola.txt
-
-    - name: Read file
-      run: cat hola.txt
-
-  others:
-    runs-on: ubuntu-latest
-    needs: holaCGZ
+    env:
+      MY_VAR: Mi variable de entorno
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4.2.2
-    - name: LS
-      run: ls -al
+    - name: Test
+      run: echo "Valor: $MY_VAR"
+
